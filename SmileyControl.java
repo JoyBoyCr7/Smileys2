@@ -10,11 +10,11 @@ public class SmileyControl extends JPanel implements ItemListener, ActionListene
 
     JPanel controlPanel;
 
-    JButton bigger, smaller, left, right, Eyecolor;
+    JButton bigger, smaller, left, right, eyeColorChange;
     JRadioButton eyesControl1, eyesControl2;
 
     ButtonGroup eyeGroup;
-
+// Smiley is controls are created
     public SmileyControl(Smiley s){
         smiley = s;
         setUpControls();
@@ -28,11 +28,14 @@ public class SmileyControl extends JPanel implements ItemListener, ActionListene
         smaller = new JButton("Shrink");
         left = new JButton("Left");
         right = new JButton("Right");
+        eyeColorChange = new JButton("Eye Color");
 
         left.addActionListener(this);
         right.addActionListener(this);
         bigger.addActionListener(this);
         smaller.addActionListener(this);
+        eyeColorChange.addActionListener(this);
+        
 
         eyesControl1 = new JRadioButton("Eyes Open");
         eyesControl2 = new JRadioButton("Eyes Closed");
@@ -51,6 +54,7 @@ public class SmileyControl extends JPanel implements ItemListener, ActionListene
         controlPanel.add(right);
         controlPanel.add(bigger);
         controlPanel.add(smaller);
+        controlPanel.add(eyeColorChange);
 
         controlPanel.add(eyesControl1);
         controlPanel.add(eyesControl2);
@@ -78,6 +82,10 @@ public class SmileyControl extends JPanel implements ItemListener, ActionListene
         }
         if (source == right ){
             smiley.changeXRight();
+            smiley.repaint();
+        }
+        if (source == eyeColorChange ){
+            smiley.changeEyeColor();
             smiley.repaint();
         }
     }
